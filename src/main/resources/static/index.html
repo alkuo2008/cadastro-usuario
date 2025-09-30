@@ -4,39 +4,47 @@
     <meta charset="UTF-8">
     <title>Cadastro de Usuário</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2d9fbbf6e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>Cadastro de Usuário</h1>
+<div class="container">
+    <h1>🌱 Cadastro de Usuário</h1>
 
-<!-- Criar usuário -->
-<h2>Criar</h2>
-<input type="text" id="nome" placeholder="Nome">
-<input type="email" id="email" placeholder="Email">
-<button onclick="criar()">Salvar</button>
+    <!-- Criar usuário -->
+    <div class="card">
+        <h2><i class="fa-solid fa-user-plus"></i> Criar Usuário</h2>
+        <input type="text" id="nome" placeholder="Nome completo">
+        <input type="email" id="email" placeholder="Email">
+        <button onclick="criar()"><i class="fa-solid fa-save"></i> Salvar</button>
+    </div>
 
-<hr>
+    <!-- Buscar usuário -->
+    <div class="card">
+        <h2><i class="fa-solid fa-magnifying-glass"></i> Buscar Usuário</h2>
+        <input type="email" id="buscarEmail" placeholder="Email">
+        <button onclick="buscar()"><i class="fa-solid fa-search"></i> Buscar</button>
+        <pre id="resultadoBuscar"></pre>
+    </div>
 
-<!-- Buscar usuário -->
-<h2>Buscar</h2>
-<input type="email" id="buscarEmail" placeholder="Email">
-<button onclick="buscar()">Buscar</button>
-<pre id="resultadoBuscar"></pre>
+    <!-- Atualizar usuário -->
+    <div class="card">
+        <h2><i class="fa-solid fa-pen-to-square"></i> Atualizar Usuário</h2>
+        <input type="number" id="id" placeholder="ID">
+        <input type="text" id="novoNome" placeholder="Novo Nome">
+        <input type="email" id="novoEmail" placeholder="Novo Email">
+        <button onclick="atualizar()"><i class="fa-solid fa-rotate"></i> Atualizar</button>
+    </div>
 
-<hr>
-
-<!-- Deletar usuário -->
-<h2>Deletar</h2>
-<input type="email" id="deletarEmail" placeholder="Email">
-<button onclick="deletar()">Deletar</button>
-
-<hr>
-
-<!-- Atualizar usuário -->
-<h2>Atualizar</h2>
-<input type="number" id="id" placeholder="ID">
-<input type="text" id="novoNome" placeholder="Novo Nome">
-<input type="email" id="novoEmail" placeholder="Novo Email">
-<button onclick="atualizar()">Atualizar</button>
+    <!-- Deletar usuário -->
+    <div class="card danger">
+        <h2><i class="fa-solid fa-trash"></i> Deletar Usuário</h2>
+        <input type="email" id="deletarEmail" placeholder="Email">
+        <button class="delete-btn" onclick="deletar()">
+            <i class="fa-solid fa-trash-can"></i> Deletar
+        </button>
+    </div>
+</div>
 
 <script>
     const api = "/usuario";
@@ -50,24 +58,26 @@
           email: document.getElementById("email").value
         })
       });
-      alert(resp.ok ? "Usuário criado!" : "Erro ao criar!");
+      alert(resp.ok ? "✅ Usuário criado com sucesso!" : "❌ Erro ao criar!");
     }
 
     async function buscar() {
       const email = document.getElementById("buscarEmail").value;
       const resp = await fetch(`${api}?email=${encodeURIComponent(email)}`);
+      const resultado = document.getElementById("resultadoBuscar");
+
       if (resp.ok) {
         const data = await resp.json();
-        document.getElementById("resultadoBuscar").innerText = JSON.stringify(data, null, 2);
+        resultado.innerText = JSON.stringify(data, null, 2);
       } else {
-        document.getElementById("resultadoBuscar").innerText = "Usuário não encontrado!";
+        resultado.innerText = "Usuário não encontrado!";
       }
     }
 
     async function deletar() {
       const email = document.getElementById("deletarEmail").value;
       const resp = await fetch(`${api}?email=${encodeURIComponent(email)}`, { method: "DELETE" });
-      alert(resp.ok ? "Usuário deletado!" : "Erro ao deletar!");
+      alert(resp.ok ? "🗑️ Usuário deletado!" : "❌ Erro ao deletar!");
     }
 
     async function atualizar() {
@@ -80,7 +90,7 @@
           email: document.getElementById("novoEmail").value
         })
       });
-      alert(resp.ok ? "Usuário atualizado!" : "Erro ao atualizar!");
+      alert(resp.ok ? "🔄 Usuário atualizado!" : "❌ Erro ao atualizar!");
     }
 </script>
 </body>

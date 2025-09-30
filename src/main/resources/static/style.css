@@ -1,40 +1,116 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Fundo em tons de verde */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f4f6f8;
-    color: #333;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #b9f6ca, #a5d6a7);
+  color: #2d3436;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
+/* Container ocupa toda a tela, com rolagem se necessário */
+.container {
+  background: #ffffff;
+  border-radius: 0;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 800px;
+  height: 100vh;
+  padding: 40px 50px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Cabeçalho */
 h1 {
-    color: #2c3e50;
-    text-align: center;
+  color: #1b5e20;
+  margin-bottom: 25px;
+  text-align: center;
 }
 
-h2 {
-    margin-top: 20px;
-    color: #34495e;
+/* Seções */
+.card {
+  background: #f6fff7;
+  border: 1px solid #c8e6c9;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: 0.3s;
 }
 
-input, button {
-    margin: 5px 0;
-    padding: 8px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+.card:hover {
+  box-shadow: 0 3px 10px rgba(56, 142, 60, 0.2);
 }
 
+.card h2 {
+  font-size: 18px;
+  color: #2e7d32;
+  margin-bottom: 15px;
+}
+
+/* Inputs */
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #bdbdbd;
+  font-size: 14px;
+}
+
+/* Botões */
 button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
+  width: 100%;
+  padding: 10px;
+  background: #43a047;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
-    background-color: #2980b9;
+  background: #2e7d32;
 }
 
-hr {
-    margin: 20px 0;
+/* Botão deletar */
+.delete-btn {
+  background: #66bb6a;
+}
+
+.delete-btn:hover {
+  background: #388e3c;
+}
+
+/* Seção de deletar */
+.danger {
+  border-left: 5px solid #81c784;
+}
+
+/* Resultado da busca */
+pre {
+  background: #f1f8e9;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  overflow-x: auto;
+  margin-top: 10px;
 }
