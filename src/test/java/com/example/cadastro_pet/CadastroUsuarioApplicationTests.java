@@ -1,4 +1,4 @@
-package com.example.cadastro_usuario;
+package com.example.cadastro_pet;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

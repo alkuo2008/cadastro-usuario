@@ -1,4 +1,4 @@
-package com.example.cadastro_usuario;
+package com.example.cadastro_pet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

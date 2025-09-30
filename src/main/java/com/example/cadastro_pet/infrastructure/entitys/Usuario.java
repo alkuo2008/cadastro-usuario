@@ -1,4 +1,4 @@
-package com.example.cadastro_usuario.infrastructure.entitys;
+package com.example.cadastro_pet.infrastructure.entitys;
 
 
 import jakarta.persistence.*;
